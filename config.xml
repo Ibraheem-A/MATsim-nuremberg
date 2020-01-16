@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="changeMode">
+   		<param name="modes" value="car,pt,slowPt" />
+	</module>
+	
+	<module name="controler">
+		<param name="eventsFileFormat" value="xml" />
+		<param name="firstIteration" value="0" />
+		<param name="lastIteration" value="0" />
+		<param name="mobsim" value="qsim" />
+		<param name="outputDirectory" value="./output12/" />
+		<param name="runId" value="be_117j" />
+		<param name="snapshotFormat" value="" />
+		<param name="writePlansInterval" value="100" />
+		<param name="writeEventsInterval" value="100" />
+	</module>
+	
+	<module name="global">
+		<param name="coordinateSystem" value="GK4" />
+	</module>
+	
+	<module name="network">
+		<param name="inputNetworkFile" value="./input/network.xml.gz" />
+	</module>
+	
+	<module name="planCalcScore" >
+		<parameterset type="activityParams" >
+			<param name="activityType" value="home" />
+			<param name="typicalDuration" value="12:00:00" />
+		</parameterset>
+
+		<parameterset type="activityParams" >
+			<param name="activityType" value="work" />
+			<param name="typicalDuration" value="09:00:00" />
+		</parameterset>
+
+		<parameterset type="activityParams" >
+			<param name="activityType" value="leisure" />
+			<param name="typicalDuration" value="02:00:00" />
+		</parameterset>
+
+		<parameterset type="activityParams" >
+			<param name="activityType" value="shopping" />
+			<param name="typicalDuration" value="01:00:00" />
+		</parameterset>
+
+		<parameterset type="activityParams" >
+			<param name="activityType" value="other" />
+			<param name="typicalDuration" value="00:30:00" />
+		</parameterset>
+		
+		<parameterset type="modeParams" >
+			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+			<param name="mode" value="car" />
+			<param name="monetaryDistanceRate" value="-0.0002" />
+		</parameterset>
+
+		<parameterset type="modeParams" >
+			<param name="constant" value="-6.0" />
+			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+			<param name="mode" value="pt" />
+		</parameterset>
+		
+		<parameterset type="modeParams" >
+			<param name="constant" value="-3.0" />
+			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+			<param name="mode" value="slowPt" />
+		</parameterset>
+	</module>
+	
+	<module name="plans">
+		<param name="inputPlansFile" value="./input/be_117j.output_plans.xml.gz" />
+	</module>
+	
+	<module name="planscalcroute" >
+		<param name="networkModes" value="car" />
+	
+		<parameterset type="teleportedModeParameters" >
+			<param name="mode" value="pt" />
+			<param name="teleportedModeSpeed" value="11.111" />
+		</parameterset>
+		
+		<parameterset type="teleportedModeParameters" >
+			<param name="mode" value="slowPt" />
+			<param name="teleportedModeSpeed" value="4.167" />
+		</parameterset>
+	</module>
+	
+	<module name="qsim">
+		<param name="flowCapacityFactor" value="0.015" />
+		<param name="storageCapacityFactor" value="0.03" />
+		<param name="removeStuckVehicles" value="false" />
+		<param name="stuckTime" value="300.0" />
+	</module>
+	
+	<module name="strategy">
+		<param name="maxAgentPlanMemorySize" value="7" />
+		
+		<parameterset type="strategysettings" >
+			<param name="strategyName" value="ChangeExpBeta" />
+			<param name="weight" value="1.0" />
+		</parameterset>
+
+		<parameterset type="strategysettings" >
+			<param name="strategyName" value="ReRoute" />
+			<param name="weight" value="0.2" />
+			<param name="disableAfterIteration" value="70" />
+		</parameterset>
+		
+		<parameterset type="strategysettings" >
+			<param name="strategyName" value="ChangeTripMode" />
+			<param name="weight" value="0.2" />
+			<param name="disableAfterIteration" value="70" />
+		</parameterset>
+	</module>
+	
+	<module name="vspExperimental">
+		<param name="vspDefaultsCheckingLevel" value="ignore" />
+	</module>
+</config>

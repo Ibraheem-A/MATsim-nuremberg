@@ -1,0 +1,2 @@
+2018-08-29 16:43:52,170  WARN ExpBetaPlanChanger:86 Would make sense to revise this once more.  See comments in code.  kai, nov08
+2018-08-29 16:45:03,391 ERROR DumpDataAtEndImpl:147 writing output events did not work; probably parameters were such that no events were generated in the final iteration
